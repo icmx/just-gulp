@@ -1,0 +1,50 @@
+@import './styles/module.scss';
+
+$font-size: 1rem;
+$font-family: 'system-ui', sans-serif;
+
+$color-text: #333333;
+$color-back: #f1f1f1;
+
+body {
+  max-width: 45rem;
+  margin: 2.5rem auto;
+  padding: 0 2.5rem;
+
+  font-size: $font-size;
+  font-family: $font-family;
+
+  line-height: 1.5;
+
+  color: $color-text;
+  background-color: $color-back;
+}
+
+h1 {
+  line-height: 1.2;
+}
+
+img {
+  @include square(8rem);
+
+  display: block;
+  margin-bottom: 2.5rem;
+}
+
+blockquote {
+  color: darken($color-text, 8%);
+  background-color: darken($color-back, 8%);
+
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+hr {
+  margin: 2.5rem 0;
+
+  border: none;
+
+  height: 1px;
+  background-color: darken($color-back, 8%);
+}

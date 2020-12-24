@@ -1,0 +1,15 @@
+extends common/layout.pug
+include common/banner.pug
+
+block main
+  h1 Page 1
+  +banner('PostCSS', 'awesome')
+  p
+    | This is a content of Page 1 —
+    |
+    a(href="..") back
+  p.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
+    doloribus veritatis consequatur in. Repellat, minus recusandae
+    reprehenderit sit iste dolores nisi tempora, eveniet tempore enim,
+    delectus et quis ex hic.
