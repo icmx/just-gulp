@@ -58,3 +58,7 @@ By default, gulp will watch for `index.*` files and its corresponding directorie
 There are lots of similar boilerplates already indeed. However, most of them are incredibly bloated by endless dependencies, which may be deprecated, outdated and even not used at all, thus I suppose there should be some really lightweight and easy to use alternative.
 
 Please note that packages choice for Just Gulp not only *bare*, but also *sane*. Modern and feature-rich `browser-sync` instead of outdated `gulp-livereload` for instance, same for `webpack-stream` and so on.
+
+## See also
+
+  - [Just Webpack](https://github.com/icmx/just-webpack) — same project, but Webpack-based.
