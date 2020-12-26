@@ -11,6 +11,8 @@ const webpack = require('webpack-stream');
 
 const package = require('./package.json');
 
+sass.compiler = require('sass');
+
 function taskClean() {
   return del(['dist']);
 }
