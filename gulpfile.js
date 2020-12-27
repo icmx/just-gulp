@@ -13,6 +13,15 @@ const package = require('./package.json');
 
 sass.compiler = require('sass');
 
+const useEnv = (environment) => {
+  return (cb) => {
+    process.env.NODE_ENV = environment;
+    cb();
+  };
+};
+
+const isEnv = (environment) => process.env.NODE_ENV === environment;
+
 function taskClean() {
   return del(['dist']);
 }
@@ -36,6 +45,7 @@ function taskTemplates() {
           version: package.version,
           license: package.license,
         },
+        pretty: isEnv('development'),
       }),
     )
     .pipe(gulp.dest('dist'));
@@ -56,25 +66,14 @@ function taskScripts() {
 }
 
 function taskStyles() {
+  const opt = { sourcemaps: isEnv('development') };
+
   return gulp
-    .src(['src/index.scss'], {
-      sourcemaps: process.env.NODE_ENV === 'development',
-    })
+    .src(['src/index.scss'], opt)
     .pipe(sass())
     .pipe(postcss())
     .pipe(rename({ basename: 'style', suffix: '.min' }))
-    .pipe(
-      gulp.dest('dist', {
-        sourcemaps: process.env.NODE_ENV === 'development',
-      }),
-    );
-}
-
-function useEnv(environment) {
-  return (cb) => {
-    process.env.NODE_ENV = environment;
-    cb();
-  };
+    .pipe(gulp.dest('dist', opt));
 }
 
 function reload(cb) {
