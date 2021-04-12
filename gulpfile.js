@@ -13,14 +13,16 @@ const package = require('./package.json');
 
 sass.compiler = require('sass');
 
-const useEnv = (environment) => {
+function useEnv(environment) {
   return (cb) => {
     process.env.NODE_ENV = environment;
     cb();
   };
-};
+}
 
-const isEnv = (environment) => process.env.NODE_ENV === environment;
+function isEnv(environment) {
+  return process.env.NODE_ENV === environment;
+}
 
 function taskClean() {
   return del(['dist']);
