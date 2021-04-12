@@ -1,13 +1,12 @@
 # Just Gulp
 
-Bare minimum boilerplate featuring Gulp, multipage Pug templating and Sass styling, all live-reloadable.
+Bare minimum boilerplate featuring Gulp, multipage Pug templating and PostCSS styling, all live-reloadable.
 
 ## Features
 
   - gulp as a builder
   - Pug templates
-  - Dart Sass styles preprocessing
-  - PostCSS with cssnano minification enabled
+  - PostCSS with cssnano minification and "include" import enabled
   - Browsersync live-reloading preview
   - Prettier project-specific editor settings
 
@@ -38,20 +37,20 @@ All sources are in `src` directory, but any path can be easily changed in [gulpf
   - `static` — ready and compiled files, like favicons, robots.txt etc.
   - `pages` — additional pages, layouts and other Pug files
   - `scripts` — additional scripts and other JS files
-  - `styles` — additional styles and other SCSS files
+  - `styles` — additional styles and other CSS files
   - `index.pug` — pages index file
   - `index.js` — scripts index file
-  - `index.scss` — styles index file
+  - `index.css` — styles index file
 
 By default, gulp will watch for `index.*` files and its corresponding directories, e.g. for `index.js` and `scripts/**/*.js` files. All files will be bundled into single HTML, CSS and JS bundles, while assets and static files will be just copied:
 
-| Sources (`src`)                   | Output (`dist`)  |
-| --------------------------------- | ---------------- |
-| `assets/*`                        | `/assets/*`      |
-| `static/*`                        | `/*`             |
-| `pages`, `index.pug`              | `/index.html`    |
-| `scripts` (optional), `index.js`  | `/main.min.js`   |
-| `styles` (optional), `index.scss` | `/style.min.css` |
+| Sources (`src`)                  | Output (`dist`)  |
+| -------------------------------- | ---------------- |
+| `assets/*`                       | `/assets/*`      |
+| `static/*`                       | `/*`             |
+| `pages`, `index.pug`             | `/index.html`    |
+| `scripts` (optional), `index.js` | `/main.min.js`   |
+| `styles` (optional), `index.css` | `/style.min.css` |
 
 ## Motivation
 
