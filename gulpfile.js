@@ -2,7 +2,11 @@ const gulp = require('gulp');
 
 const pug = require('gulp-pug');
 const postcss = require('gulp-postcss');
-const csso = require('postcss-csso');
+const postcssPlugins = [
+  require('postcss-import'),
+  require('postcss-csso'),
+];
+
 const rename = require('gulp-rename');
 
 const del = require('del');
@@ -70,7 +74,7 @@ function taskStyles() {
 
   return gulp
     .src(['src/index.css'], opt)
-    .pipe(postcss([csso]))
+    .pipe(postcss(postcssPlugins))
     .pipe(rename({ basename: 'style', suffix: '.min' }))
     .pipe(gulp.dest('dist', opt));
 }
@@ -96,7 +100,7 @@ function serve(cb) {
   );
 
   gulp.watch(
-    ['src/index.scss', 'src/styles/**/*.scss'],
+    ['src/index.css', 'src/styles/**/*.css'],
     gulp.series(taskStyles, (cb) =>
       gulp.src('dist').pipe(server.stream()).on('end', cb),
     ),
