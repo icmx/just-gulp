@@ -16,7 +16,7 @@
     "minimal",
     "gulp",
     "pug",
-    "scss",
+    "postcss",
     "live-reload"
   ],
   "author": "icmx",
