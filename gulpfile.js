@@ -1,8 +1,8 @@
 const gulp = require('gulp');
 
 const pug = require('gulp-pug');
-const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
+const csso = require('postcss-csso');
 const rename = require('gulp-rename');
 
 const del = require('del');
@@ -10,8 +10,6 @@ const server = require('browser-sync').create();
 const webpack = require('webpack-stream');
 
 const package = require('./package.json');
-
-sass.compiler = require('sass');
 
 function useEnv(environment) {
   return (cb) => {
@@ -71,9 +69,8 @@ function taskStyles() {
   const opt = { sourcemaps: isEnv('development') };
 
   return gulp
-    .src(['src/index.scss'], opt)
-    .pipe(sass())
-    .pipe(postcss())
+    .src(['src/index.css'], opt)
+    .pipe(postcss([csso]))
     .pipe(rename({ basename: 'style', suffix: '.min' }))
     .pipe(gulp.dest('dist', opt));
 }
@@ -136,5 +133,7 @@ const build = gulp.series(
   ),
 );
 
-module.exports.serve = gulp.series(useEnv('development'), build, serve);
-module.exports.build = gulp.series(useEnv('production'), build);
+module.exports = {
+  serve: gulp.series(useEnv('development'), build, serve),
+  build: gulp.series(useEnv('production'), build),
+};
