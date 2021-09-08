@@ -1,10 +1,10 @@
 {
   "name": "just-gulp",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "description": "Bare minimum boilerplate featuring Gulp, multipage Pug templating and PostCSS styling, all live-reloadable",
   "scripts": {
-    "serve": "gulp serve",
+    "start": "gulp start",
     "build": "gulp build"
   },
   "repository": {
