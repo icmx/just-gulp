@@ -6,26 +6,39 @@ Bare minimum boilerplate featuring Gulp, multipage Pug templating and PostCSS st
 
   - gulp as a builder
   - Pug templates
-  - PostCSS with cssnano minification and "include" import enabled
+  - PostCSS with csso minification and include-import enabled
   - Browsersync live-reloading preview
   - Prettier project-specific editor settings
 
 ## Usage
 
+Clone this repository:
+
 ```sh
-# clone repository
 git clone https://github.com/icmx/just-gulp
+```
 
-# go to local copy
+Go to local saved copy:
+
+```sh
 cd just-gulp
+```
 
-# install dependencies
+Install dependencies:
+
+```sh
 npm install
+```
 
-# launch it on localhost:1337 -- happy coding!
-npm run serve
+Launch it on [localhost:1337](http://localhost:1337/) — happy coding!
 
-# build it
+```sh
+npm run start
+```
+
+Build it:
+
+```sh
 npm run build
 ```
 
@@ -54,9 +67,9 @@ By default, gulp will watch for `index.*` files and its corresponding directorie
 
 ## Motivation
 
-There are lots of similar boilerplates already indeed. However, most of them are incredibly bloated by endless dependencies, which may be deprecated, outdated and even not used at all, thus I suppose there should be some really lightweight and easy to use alternative.
+There are lots of similar boilerplates already indeed. However, most of them are incredibly bloated by endless dependencies, which may be deprecated, outdated and not even used at all, thus I suppose there should be some really lightweight and easy to use alternative.
 
-Please note that packages choice for Just Gulp not only *bare*, but also *sane*. Modern and feature-rich `browser-sync` instead of outdated `gulp-livereload` for instance, same for `webpack-stream` and so on.
+Please note that packages choice for Just Gulp not only *bare*, but also *sane*: modern and feature-rich `browser-sync` instead of outdated `gulp-livereload` for instance, same for `webpack-stream` and so on.
 
 ## See also
 
