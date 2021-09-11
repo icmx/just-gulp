@@ -1,4 +1,4 @@
-# Just Gulp
+# 🛠️ Just Gulp
 
 Bare minimum boilerplate featuring Gulp, multipage Pug templating and PostCSS styling, all live-reloadable.
 
