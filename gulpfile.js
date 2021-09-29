@@ -84,7 +84,7 @@ function reload(cb) {
   cb();
 }
 
-function start(cb) {
+function watch(cb) {
   server.init({
     server: 'dist',
     port: 1337,
@@ -138,6 +138,6 @@ const build = gulp.series(
 );
 
 module.exports = {
-  start: gulp.series(useEnv('development'), build, start),
+  watch: gulp.series(useEnv('development'), build, watch),
   build: gulp.series(useEnv('production'), build),
 };

@@ -33,7 +33,7 @@ npm install
 Launch it on [localhost:1337](http://localhost:1337/) — happy coding!
 
 ```sh
-npm run start
+npm run watch
 ```
 
 Build it:
@@ -74,3 +74,4 @@ Please note that packages choice for Just Gulp not only *bare*, but also *sane*:
 ## See also
 
   - [Just Webpack](https://github.com/icmx/just-webpack) — same project, but Webpack-based.
+  - [Just Monorepo](https://github.com/icmx/just-monorepo) — minimal monorepository build with NPM workspaces

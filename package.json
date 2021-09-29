@@ -4,7 +4,7 @@
   "private": true,
   "description": "Bare minimum boilerplate featuring Gulp, multipage Pug templating and PostCSS styling, all live-reloadable",
   "scripts": {
-    "start": "gulp start",
+    "watch": "gulp watch",
     "build": "gulp build"
   },
   "repository": {
