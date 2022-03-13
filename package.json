@@ -1,6 +1,6 @@
 {
   "name": "just-gulp",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "description": "Bare minimum boilerplate featuring Gulp, multipage Pug templating and PostCSS styling, all live-reloadable",
   "scripts": {
@@ -26,16 +26,16 @@
   },
   "homepage": "https://github.com/icmx/just-gulp#readme",
   "devDependencies": {
-    "browser-sync": "^2.27.5",
+    "browser-sync": "^2.27.7",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-postcss": "^9.0.1",
     "gulp-pug": "^5.0.0",
     "gulp-rename": "^2.0.0",
-    "postcss": "^8.3.6",
-    "postcss-csso": "^5.0.1",
+    "postcss": "^8.4.8",
+    "postcss-csso": "^6.0.0",
     "postcss-import": "^14.0.2",
-    "webpack": "^5.52.0",
+    "webpack": "^5.70.0",
     "webpack-stream": "^7.0.0"
   }
 }
