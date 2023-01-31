@@ -1,4 +1,4 @@
-import { Component } from './scripts/component';
+import { Component } from './scripts/component.js';
 
 const instance = Component('Example component');
 

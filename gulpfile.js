@@ -1,19 +1,15 @@
-const gulp = require('gulp');
+import gulp from 'gulp';
+import pug from 'gulp-pug'
+import postcss from 'gulp-postcss';
+import postcssPluginImport from 'postcss-import';
+import postcssPlginCsso from 'postcss-csso'
+import rename from 'gulp-rename'
+import { deleteAsync } from 'del';
+import browsersync from 'browser-sync'
+import webpack from 'webpack-stream'
+import metadata from './package.json' assert {type: 'json'}
 
-const pug = require('gulp-pug');
-const postcss = require('gulp-postcss');
-const postcssPlugins = [
-  require('postcss-import'),
-  require('postcss-csso'),
-];
-
-const rename = require('gulp-rename');
-
-const del = require('del');
-const server = require('browser-sync').create();
-const webpack = require('webpack-stream');
-
-const package = require('./package.json');
+const server = browsersync.create();
 
 function useEnv(environment) {
   return (cb) => {
@@ -26,28 +22,28 @@ function isEnv(environment) {
   return process.env.NODE_ENV === environment;
 }
 
-function taskClean() {
-  return del(['dist']);
+async function taskClean() {
+  return deleteAsync(['dist']);
 }
 
-function taskStatic() {
+async function taskStatic() {
   return gulp.src(['src/static/**/*.*']).pipe(gulp.dest('dist'));
 }
 
-function taskImages() {
+async function taskImages() {
   return gulp
     .src(['src/assets/images/*.{gif,png,jpg,svg}'])
     .pipe(gulp.dest('dist/assets/images'));
 }
 
-function taskTemplates() {
+async function taskTemplates() {
   return gulp
     .src(['src/index.pug', 'src/pages/*.pug'], { base: 'src' })
     .pipe(
       pug({
         locals: {
-          version: package.version,
-          license: package.license,
+          version: metadata.version,
+          license: metadata.license,
         },
         pretty: isEnv('development'),
       }),
@@ -55,7 +51,7 @@ function taskTemplates() {
     .pipe(gulp.dest('dist'));
 }
 
-function taskScripts() {
+async function taskScripts() {
   return gulp
     .src(['src/index.js', 'src/scripts/**/*.js'])
     .pipe(
@@ -69,12 +65,15 @@ function taskScripts() {
     .pipe(gulp.dest('dist'));
 }
 
-function taskStyles() {
+async function taskStyles() {
   const opt = { sourcemaps: isEnv('development') };
 
   return gulp
     .src(['src/index.css'], opt)
-    .pipe(postcss(postcssPlugins))
+    .pipe(postcss([
+      postcssPluginImport,
+      postcssPlginCsso
+    ]))
     .pipe(rename({ basename: 'style', suffix: '.min' }))
     .pipe(gulp.dest('dist', opt));
 }
@@ -84,7 +83,7 @@ function reload(cb) {
   cb();
 }
 
-function watch(cb) {
+function taskWatch(cb) {
   server.init({
     server: 'dist',
     port: 1337,
@@ -126,7 +125,7 @@ function watch(cb) {
   return cb();
 }
 
-const build = gulp.series(
+const taskBuild = gulp.series(
   taskClean,
   gulp.parallel(
     taskTemplates,
@@ -137,7 +136,5 @@ const build = gulp.series(
   ),
 );
 
-module.exports = {
-  watch: gulp.series(useEnv('development'), build, watch),
-  build: gulp.series(useEnv('production'), build),
-};
+export const watch = gulp.series(useEnv('development'), taskBuild, taskWatch);
+export const build = gulp.series(useEnv('production'), taskBuild);
