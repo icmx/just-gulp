@@ -7,7 +7,6 @@ import rename from 'gulp-rename';
 import { deleteAsync } from 'del';
 import browsersync from 'browser-sync';
 import webpack from 'webpack-stream';
-import metadata from './package.json' assert { type: 'json' };
 
 const server = browsersync.create();
 
@@ -43,12 +42,8 @@ async function taskTemplates() {
     .src(['src/index.pug', 'src/pages/*.pug'], { base: 'src' })
     .pipe(
       pug({
-        locals: {
-          version: metadata.version,
-          license: metadata.license,
-        },
         pretty: isEnv('development'),
-      }),
+      })
     )
     .pipe(gulp.dest('dist'));
 }
