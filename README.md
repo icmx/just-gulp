@@ -1,14 +1,17 @@
 # 🛠️ Just Gulp
 
-Bare minimum boilerplate featuring Gulp, multipage Pug templating and PostCSS styling, all live-reloadable.
+> **Outdated**
+>
+> This project uses outdated technologies and is not recommended for use in modern development.
+
+Bare minimum boilerplate featuring Gulp, Pug and PostCSS, all live-reloadable.
 
 ## Features
 
   - gulp as a builder
   - Pug templates
-  - PostCSS with csso minification and include-import enabled
+  - PostCSS with cssnano minification and include-import enabled
   - Browsersync live-reloading preview
-  - Prettier project-specific editor settings
 
 ## Usage
 
@@ -46,7 +49,7 @@ npm run build
 
 All sources are in `src` directory, but any path can be easily changed in [gulpfile.js](gulpfile.js).
 
-  - `assets` — *almost-compiled* binary files like images, icon sets, fonts etc. By default it contains only `images` subdirectory which have its own gulp task. If you want to use other asssets, you have to create a new directory and write another task by yourself.
+  - `assets` — *almost-compiled* binary files like images, icon sets, fonts etc. By default it contains only `images` subdirectory which have its own gulp task. If you want to use other assets, you have to create a new directory and write another task by yourself.
   - `static` — ready and compiled files, like favicons, robots.txt etc.
   - `pages` — additional pages, layouts and other Pug files
   - `scripts` — additional scripts and other JS files
